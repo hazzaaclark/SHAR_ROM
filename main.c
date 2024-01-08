@@ -11,20 +11,28 @@
 
 /* MODULARISATION WILL BE ADDED AS AND WHEN APPROPRIATE */
 
+/* NESTED INCLUDES */
+
+#include "util.h"
+
+/* SYSTEM INCLUDES */
+
 #include <malloc.h>
 #include <memory.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+int RETURN_FILE_STREAM(struct FILE_ARGS* FILE_BASE)
+{
+    return fprintf(&FILE_BASE->FILE_INDEX, NULL, NULL);
+}
+
 int main(int argc, const char** argv, const char** envp)
 {
-    char(*MEM_INCREMENT);
-    char(*MEMORY_BASE);
-    int(*STACK_BASE);
-    int RESULT;
-    int* FILE_DESTINATION;
-    
+    struct MEMORY_STACK* MEM_STACK;
+    struct FILE_ARGS* FILES;
+
     /* CHECKS TO SEE IF THE ENTRY CODE OF THE PROGRAM */
     /* HAS BEEN MET IN RELATION TO THE LOCAL EXECUTION ARGS */
 
@@ -38,15 +46,15 @@ int main(int argc, const char** argv, const char** envp)
 
         do
         {
-            if(MEMORY_BASE != sizeof(MEM_INCREMENT) == NULL)
+            if(MEM_STACK->MEMORY_BASE != sizeof(&MEM_STACK->MEM_INCREMENT) == NULL)
             {
-                STACK_BASE = (int*)malloc(sizeof(MEM_INCREMENT));
+                MEM_STACK->STACK_BASE = (int*)malloc(sizeof(&MEM_STACK->MEM_INCREMENT));
             }
 
-            ++MEMORY_BASE;
+            MEM_STACK++;
         }
 
-        while (FILE_DESTINATION);
+        while (FILES->FILE_DESTINATION);
         
     }
 }
